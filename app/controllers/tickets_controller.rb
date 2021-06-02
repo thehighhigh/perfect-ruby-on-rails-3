@@ -20,8 +20,8 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    @ticket = Ticket.find_by(user_id: current_user.id, event_id: params[:id])
-    @ticket.destroy!
-    redirect_to event_path(params[:id]), notice: "このイベントの参加表明を取り消しました。"
+    ticket = current_user.tickets.find_by!(event_id: params[:event_id])
+    ticket.destroy!
+    redirect_to event_path(params[:event_id]), notice: "このイベントの参加表明を取り消しました。"
   end
 end
