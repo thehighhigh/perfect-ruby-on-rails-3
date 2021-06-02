@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  has_many :tickets
   belongs_to :owner, class_name: "User"
 
   validates :name , length: { maximum: 50 }, presence: true
@@ -11,6 +12,11 @@ class Event < ApplicationRecord
   def created_by?(user)
     return false unless user
     owner_id == user.id
+  end
+
+  def joined?(user)
+    return false unless user
+    tickets.find_by(user_id: user.id)
   end
   
   private
