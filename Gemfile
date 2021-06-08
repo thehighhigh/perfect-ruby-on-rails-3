@@ -50,6 +50,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'factory_bot_rails'
 end
 
 gem 'hamlit-rails', '~>0.2.3'
